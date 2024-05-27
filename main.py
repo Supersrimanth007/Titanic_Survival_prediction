@@ -56,7 +56,7 @@ if button:
         color = "#FF5722"
 
     st.markdown(f"<h2 style='text-align: center; color: {color};'>Prediction: {result}</h1>", unsafe_allow_html=True)
-    st.image("titanic.jpg", width=200, caption="Titanic Survival Prediction", use_column_width=True)
+    st.image("titanic.gif", width=200, caption="Titanic Survival Prediction", use_column_width=True)
 
 else:
     st.markdown(f"<h2 style='text-align: center; color: white;'>Enter all the values to get your survival prediction</h1>", unsafe_allow_html=True)
@@ -65,7 +65,7 @@ else:
             data = f.read()
         return base64.b64encode(data).decode()
 
-    img = get_img_as_base64("titanic.gif")
+    img = get_img_as_base64("titanic.jpg")
     page_bg_img = f"""
     <style>
     [data-testid="stAppViewContainer"] > .main {{
