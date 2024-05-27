@@ -55,7 +55,7 @@ if predict_button:
         Features += [0, 1]
     
     # Load model
-    Model = pickle.load(open('TitanicModel.pkl', 'rb'))
+    Model = pickle.load(open('LogModel.pkl', 'rb'))
     
     # Make prediction
     prediction = Model.predict([Features])[0]
@@ -67,7 +67,7 @@ if predict_button:
         result = "Did Not Survive"
         color = "#FF5722"
     
-    gif = get_img_as_base64("/mnt/data/titanic.gif")
+    gif = get_img_as_base64("titanic.gif")
     page_bg_gif = f"""
     <style>
     [data-testid="stAppViewContainer"] > .main {{
@@ -103,7 +103,7 @@ if predict_button:
         st.experimental_rerun()
 else:
     st.markdown(f"<h2 style='text-align: center; color: white;'>Enter all the values to get your survival prediction</h2>", unsafe_allow_html=True)
-    img = get_img_as_base64("/mnt/data/titanic.jpg")
+    img = get_img_as_base64("titanic.jpg")
     page_bg_img = f"""
     <style>
     [data-testid="stAppViewContainer"] > .main {{
