@@ -130,6 +130,4 @@ else:
     }}
     </style>
     """
-    st.markdown(page_bg_img, unsafe_allow_html=True)
-    st.markdown(f"<h2 class='animated-text'>Welcome to the Titanic Survival Prediction App</h2>", unsafe_allow_html=True)
-    st.markdown(f"<h2 class='animated-text'>Please fill out the details on the left sidebar to see if you would have survived the Titanic disaster.</h2>", unsafe_allow_html=True)
+     
