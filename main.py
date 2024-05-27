@@ -55,7 +55,7 @@ if predict_button:
         Features += [0, 1]
     
     # Load model
-    Model = pickle.load(open('LogcModel.pkl', 'rb'))
+    Model = pickle.load(open('LogModel.pkl', 'rb'))
     
     # Make prediction
     prediction = Model.predict([Features])[0]
