@@ -28,14 +28,15 @@ Fare = st.sidebar.number_input("Ticket Fare", min_value=0.0, max_value=500.0, va
 Embarked = st.sidebar.selectbox("Port of Embarkation (Embarked)", ("Cherbourg (C)", "Queenstown (Q)", "Southampton (S)"))
 
 # Load the saved model
-button = st.sidebar.button("Predict Survival")
+predict_button = st.sidebar.button("Predict Survival")
+back_button = st.sidebar.button("Make Another Prediction")
 
 def get_img_as_base64(file):
     with open(file, "rb") as f:
         data = f.read()
     return base64.b64encode(data).decode()
 
-if button:
+if predict_button:
     # Create the feature vector
     Features = [
         Pclass,
@@ -73,16 +74,17 @@ if button:
     background-image: url("data:image/gif;base64,{gif}");
     background-size: cover;
     background-position: center;
-    margin-top: -50px;
+    margin-top: -100px;
     }}
     [data-testid="stHeader"] {{
     background: rgba(0,0,0,0);
     }}
     .animated-text {{
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
         animation: colorchange 2s infinite;
+        text-align: center;
     }}
     @keyframes colorchange {{
         0% {{ color: #FF5722; }}
@@ -94,9 +96,13 @@ if button:
     </style>
     """
     st.markdown(page_bg_gif, unsafe_allow_html=True)
-    st.markdown(f"<h2 class='animated-text' style='text-align: center;'>Prediction: {result}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h2 class='animated-text'>Prediction: {result}</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 class='animated-text'>According to our prediction model, you would have {'survived' if prediction == 1 else 'not survived'} the Titanic disaster.</h2>", unsafe_allow_html=True)
+    
+    if back_button:
+        st.experimental_rerun()
 else:
-    st.markdown(f"<h2 class='animated-text' style='text-align: center;'>Enter all the values to get your survival prediction</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h2 class='animated-text'>Enter all the values to get your survival prediction</h2>", unsafe_allow_html=True)
     img = get_img_as_base64("titanic.jpg")
     page_bg_img = f"""
     <style>
@@ -108,12 +114,12 @@ else:
     [data-testid="stHeader"] {{
     background: rgba(0,0,0,0);
     }}
-    h2 {{
-    color: #FFFFFF;
-    font-size: 2.5rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    animation: colorchange 2s infinite;
+    .animated-text {{
+        font-size: 3rem;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        animation: colorchange 2s infinite;
+        text-align: center;
     }}
     @keyframes colorchange {{
         0% {{ color: #FF5722; }}
@@ -125,3 +131,5 @@ else:
     </style>
     """
     st.markdown(page_bg_img, unsafe_allow_html=True)
+    st.markdown(f"<h2 class='animated-text'>Welcome to the Titanic Survival Prediction App</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 class='animated-text'>Please fill out the details on the left sidebar to see if you would have survived the Titanic disaster.</h2>", unsafe_allow_html=True)
